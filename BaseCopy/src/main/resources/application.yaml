@@ -1,0 +1,45 @@
+spring:
+  main:
+    banner-mode: "console"
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/common_test_server?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root
+  profiles:
+    #启用开发环境配置
+    active: development
+
+logging:
+  config: classpath:logback.xml
+
+server:
+  session:
+    timeout: 1800
+---
+#以下是开发环境配置
+spring:
+  profiles: development
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+    content-type: text/html
+server:
+  port: 8081
+
+---
+#以下是生产环境配置
+spring:
+  profiles: production
+  thymeleaf:
+    cache: true
+    prefix: classpath:/templates
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+    content-type: text/html
+server:
+  port: 80

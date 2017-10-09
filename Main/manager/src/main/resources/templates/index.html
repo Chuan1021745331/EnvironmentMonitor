@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link th:href="@{/css/smart.css}" href="../static/css/smart.css" rel="stylesheet" />
+    <link th:href="@{/css/materialize/materialize.css}" type="text/css" rel="stylesheet"
+          href="../static/css/materialize/materialize.css" media="screen,projection"/>
+    <link th:href="@{/css/fullpage/jquery.fullpage.min.css}" href="../static/css/fullpage/jquery.fullpage.min.css"
+          rel="stylesheet"/>
+    <title>智慧工地</title>
+</head>
+<body>
+<nav class="nav-extended black padding-left-10">
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo" style="margin-left: 20px">智慧工地控制中心</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="#"><i class="" onclick="window.location.reload()"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-shuaxin1"></use></svg></i></a></li>
+            <li><a href="#setting" class="modal-trigger"><i class=""><svg class="icon" aria-hidden="true"><use xlink:href="#icon-m-per-Setup-01"></use></svg></i></a></li>
+            <li><a href="#more" class="modal-trigger"><i class=""><svg class="icon" aria-hidden="true"><use xlink:href="#icon-gengduo"></use></svg></i></a></li>
+        </ul>
+    </div>
+    <div class="nav-content">
+        <ul id="tabContainer" class="tabs tabs-transparent">
+            <li id="1st" class="tab"><a class="active">子系统状态</a></li>
+            <li id="2nd" class="tab"><a>系统配置</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div id="fullpage" style="min-width: 1024px;">
+    <div class="section" id="subSystemStatusVue">
+        <div class="fp-slide sm-layout-center-horizontal">
+            <div class="sm-width-100-p  er sm-height-100-per green sm-padding-bottom-1rem">
+                <div class="sm-width-100-per sm-height-100-per">
+                    <div class="sm-width-30-per sm-padding-left-1rem">
+                        <ul class="collapsible" data-collapsible="accordion">
+                            <li>
+                                <div class="collapsible-header" style="line-height: 24px">
+                                    <i class=""><svg class="icon" aria-hidden="true"><use xlink:href="#icon-shipinjiankong"></use></svg></i>
+                                    视频监控系统
+                                    <span class="new badge" data-badge-caption="正在运行"></span>
+                                </div>
+                                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header" style="line-height: 24px">
+                                    <i class=""><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dingwei1"></use></svg></i>
+                                    定位系统
+                                    <span class="new badge red" data-badge-caption="掉线"></span>
+                                </div>
+                                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header" style="line-height: 24px">
+                                    <i class=""><svg class="icon" aria-hidden="true"><use xlink:href="#icon-huanjing"></use></svg></i>
+                                    环境监测系统
+                                    <span class="badge">1</span></div>
+                                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header" style="line-height: 24px">
+                                    <i class=""><svg class="icon" aria-hidden="true"><use xlink:href="#icon-laowuguanli04"></use></svg></i>
+                                    劳务管理系统
+                                    <span class="badge">1</span></div>
+                                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fp-slide">系统配置</div>
+    </div>
+</div>
+
+<input id="webSocketUrl" type="hidden" th:value="${@smartWorkSiteConfig.getDataRealTimeUrl()}" />
+<!-- Modal Structure -->
+<div id="setting" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <h4>传输控制</h4>
+        <p>修改相应参数，点击确定生效</p>
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">trending_up
+                        </i>
+                        <input id="icon_prefix" type="text" class="validate" />
+                        <label for="icon_prefix">数据上传频率(min)</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">phone</i>
+                        <input id="icon_telephone" type="tel" class="validate" />
+                        <label for="icon_telephone">Telephone</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat ">确定</a>
+        <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat ">取消</a>
+    </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="more" class="modal bottom-sheet">
+    <div class="modal-content">
+        <h4>进入子系统</h4>
+        <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>劳务管理</a>
+        <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>视频监控</a>
+        <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>定位系统</a>
+        <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>环境检测</a>
+        <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>升降机检测</a>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">关闭</a>
+    </div>
+</div>
+<div id="checkBrowser" class="modal">
+    <div class="modal-content">
+        <h4>错误</h4>
+        <p>您的浏览器不支持WebSocket，请更换浏览器，否则无法运行</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">我知道了</a>
+    </div>
+</div>
+</body>
+<script th:src="@{/js/jquery-3.2.1.min.js}" src="../static/js/jquery-3.2.1.min.js"></script>
+<script th:src="@{/js/materialize/materialize.min.js}" src="../static/js/materialize/materialize.min.js"></script>
+<script th:src="@{/js/iconfont/iconfont.js}" src="../static/js/iconfont/iconfont.js"></script>
+<script th:src="@{/js/fullpage/jquery.fullpage.min.js}" src="../static/js/fullpage/jquery.fullpage.min.js"></script>
+<script th:src="@{/js/vue/vue.js}" src="../static/js/vue/vue.js"></script>
+<script th:src="@{/js/echarts/echarts.js}" src="../static/js/echarts/echarts.js"></script>
+<script th:src="@{/js/smart/vars.js}" src="../static/js/smart/vars.js"></script>
+<script th:src="@{/js/smart/utils.js}" src="../static/js/smart/utils.js"></script>
+<script th:src="@{/js/smart/initWebSocket.js}" src="../static/js/smart/initWebSocket.js"></script>
+<script th:src="@{/js/smart/initVue.js}" src="../static/js/smart/initVue.js"></script>
+<script th:src="@{/js/smart/index.js}" src="../static/js/smart/index.js"></script>
+<script type="text/javascript">
+
+</script>
+</html>

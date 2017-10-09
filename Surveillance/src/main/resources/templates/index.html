@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link th:href="@{/css/smart.css}" href="../static/css/smart.css" rel="stylesheet" />
+    <link th:href="@{/css/materialize/materialize.css}" type="text/css" rel="stylesheet"
+          href="../static/css/materialize/materialize.css" media="screen,projection"/>
+    <link th:href="@{/css/fullpage/jquery.fullpage.min.css}" href="../static/css/fullpage/jquery.fullpage.min.css"
+          rel="stylesheet"/>
+    <title>智慧工地-视频监控系统</title>
+</head>
+<body>
+<!-- 导航栏 -->
+<nav>
+    <div class="nav-wrapper black padding-left-10">
+        <a href="#" class="brand-logo" style="margin-left: 20px">智慧工地-视频监控系统</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="#" data-activates="slide-out" id="slideMenu"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zititubiaocebianlan"></use></svg></a></li>
+        </ul>
+
+    </div>
+</nav>
+<!-- 侧边栏 -->
+<ul id="slide-out" class="side-nav">
+    <li>
+        <div id="statusVue" class="user-view">
+            <div class="background black"></div>
+            <a href="#"><img class="circle" th:src="@{/images/fun1.png}" src="../static/images/fun1.png" /></a>
+            <a href="#"><span class="name" style="font-size: 18px" v-bind:class="[needRefresh ? errorClass : normalClass]">{{ runStatus }}</span></a>
+            <a href="#"><span v-bind:class="[needReconnect ? errorClass : normalClass]">{{ connectStatus }}</span></a>
+        </div>
+    </li>
+    <li><a class="subheader">操作</a></li>
+    <li><a href="#">操作1</a></li>
+    <li><a href="#">操作2</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">配置</a></li>
+    <li><a class="waves-effect" href="#">配置1</a></li>
+</ul>
+
+<!-- 以下放界面组件，需要自己定制 -->
+
+<!-- ******以下业务无关****** -->
+<!-- 模态框 -->
+<div id="checkBrowser" class="modal">
+    <div class="modal-content">
+        <h4>错误</h4>
+        <p>您的浏览器不支持WebSocket，请更换浏览器，否则无法运行</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">我知道了</a>
+    </div>
+</div>
+</body>
+<script th:src="@{/js/jquery-3.2.1.min.js}" src="../static/js/jquery-3.2.1.min.js"></script>
+<script th:src="@{/js/materialize/materialize.min.js}" src="../static/js/materialize/materialize.min.js"></script>
+<script th:src="@{/js/iconfont/iconfont.js}" src="../static/js/iconfont/iconfont.js"></script>
+<script th:src="@{/js/fullpage/jquery.fullpage.min.js}" src="../static/js/fullpage/jquery.fullpage.min.js"></script>
+<script th:src="@{/js/vue/vue.js}" src="../static/js/vue/vue.js"></script>
+<script th:src="@{/js/echarts/echarts.js}" src="../static/js/echarts/echarts.js"></script>
+<script th:src="@{/js/smart/vars.js}" src="../static/js/smart/vars.js"></script>
+<script th:src="@{/js/smart/utils.js}" src="../static/js/smart/utils.js"></script>
+<script th:src="@{/js/smart/initVue.js}" src="../static/js/smart/initVue.js"></script>
+<script th:src="@{/js/smart/initWebSocket.js}" src="../static/js/smart/initWebSocket.js"></script>
+<script th:src="@{/js/smart/index.js}" src="../static/js/smart/index.js"></script>
+<script type="text/javascript">
+
+</script>
+</html>

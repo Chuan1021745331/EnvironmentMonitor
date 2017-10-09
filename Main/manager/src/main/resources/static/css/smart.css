@@ -1,0 +1,317 @@
+html, body
+{
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*overflow: hidden;*/
+    margin: 0;
+    padding: 0;
+    min-width: 1366px;
+}
+
+.debug
+{
+    border: 1px solid red;
+}
+.icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+/*^_^*------容器布局------*^_^*/
+.sm-layout-left-center
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    justify-content: flex-start;
+    align-items: center;
+}
+.sm-layout-right-center
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    justify-content: flex-end;
+    align-items: center;
+}
+.sm-layout-top-center
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    justify-content: flex-start;
+    align-items: center;
+}
+.sm-layout-top-center-reverse
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    justify-content: flex-end;
+    align-items: center;
+}
+.sm-layout-bottom-center
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    justify-content: center;
+    align-items: flex-end;
+}
+.sm-layout-center-horizontal
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    justify-content: center;
+    align-items: center;
+}
+.sm-layout-center-vertical
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    justify-content: center;
+    align-items: center;
+}
+
+/*^_^*------组件------*^_^*/
+.sm-scrollbar-black
+{
+    /*margin-right: -15px;*/
+}
+.sm-scrollbar-black::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 4px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+.sm-scrollbar-black::-webkit-scrollbar
+{
+    /*width: 4px;*/
+    background-color: #F5F5F5;
+    height: 0;
+    width: 0;
+}
+
+.sm-scrollbar-black::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    background-color: #000000;
+}
+
+/*^_^*------尺寸------*^_^*/
+.sm-width-100-per
+{
+    width: 100%;
+}
+.sm-width-66-per
+{
+    width: 66.6666667%;
+}
+
+.sm-width-60-per
+{
+    width: 60%;
+}
+.sm-width-50-per
+{
+    width: 50%;
+}
+.sm-width-45-per
+{
+    width: 45%;
+}
+.sm-width-40-per
+{
+    width: 40%;
+}
+.sm-width-33-per
+{
+    width: 33.3333333%;
+}
+.sm-width-30-per
+{
+    width: 30%;
+}
+.sm-width-25-per
+{
+    width: 25%;
+}
+.sm-width-20-per
+{
+    width: 20%;
+}
+.sm-width-10-per
+{
+    width: 10%;
+}
+.sm-height-100-per
+{
+    height: 100%;
+}
+.sm-height-80-per
+{
+    height: 80%;
+}
+.sm-height-90-per
+{
+    height: 90%;
+}
+.sm-height-60-per
+{
+    height: 60%;
+}
+.sm-height-33-per
+{
+    height: 33%;
+}
+.sm-height-30-per
+{
+    height: 30%;
+}
+.sm-height-35-per
+{
+    height: 35%;
+}
+.sm-height-20-per
+{
+    height: 20%;
+}
+.sm-height-10-per
+{
+    height: 10%;
+}
+.sm-height-50-per
+{
+    height: 50%;
+}
+.sm-height-40-per
+{
+    height: 40%;
+}
+.sm-height-10-per
+{
+    height: 10%;
+}
+.sm-height-8-per
+{
+    height: 8%;
+}
+.sm-height-5-per
+{
+    height: 5%;
+}
+.sm-text-size-2-em
+{
+    font-size: 2em;
+}
+.sm-text-size-1point5-em
+{
+    font-size: 1.5em;
+}
+.sm-text-size-1-em
+{
+    font-size: 1em;
+}
+.sm-text-size-point5-em
+{
+    font-size: .5em;
+}
+
+/*^_^*------间距------*^_^*/
+.sm-padding-left-25px
+{
+    padding-left: 25px;
+}
+.sm-padding-left-20px
+{
+    padding-left: 20px;
+}
+.sm-padding-left-15px
+{
+    padding-left: 15px;
+}
+.sm-padding-left-10px
+ {
+     padding-left: 10px;
+ }
+.sm-padding-left-5px
+{
+    padding-left: 5px;
+}
+.sm-padding-left-1rem
+{
+    padding-left: 1rem;
+}
+.sm-padding-1rem
+{
+    padding: 1rem;
+}
+.sm-padding-right-1rem
+{
+    padding-right: 1rem;
+}
+.sm-padding-bottom-1rem
+{
+    padding-bottom: 1rem;
+    padding-bottom: 100px;
+}
+.sm-padding-10px
+{
+    padding: 10px;
+}
+.sm-margin-1rem
+{
+    margin: 1rem;
+}
+.sm-margin-top-1rem
+{
+    margin-top: 1rem;
+}
+.sm-margin-bottom-20px
+{
+    margin-bottom: 20px;
+}
+.sm-margin-left-1rem
+{
+    margin-left: 1rem;
+}
+.sm-margin-right-1rem
+{
+    margin-right: 1rem;
+}
+
+/*^_^*------颜色------*^_^*/
+.sm-background-color-base
+{
+    background: #000000;
+}
+.sm-background-color-red
+{
+    background: #FF0000;
+}
+.sm-text-color-white
+{
+    color: #FFFFFF;
+}
+
+/*^_^*------其他------*^_^*/
+.cursorPointer
+{
+    cursor: pointer;
+}
+.opacity60
+{
+    opacity: 0.6;
+}
