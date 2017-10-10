@@ -91,5 +91,7 @@ public class NettyServerHandler extends HeartBeatHandler
              * FIXME 如果子系统发来初始化信息后有掉线，则页面显示掉线，重新连接时恢复正常
              */
         }
+
+        System.out.println(string);
     }
 }
