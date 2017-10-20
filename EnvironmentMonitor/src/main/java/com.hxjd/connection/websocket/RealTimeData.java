@@ -11,9 +11,9 @@ package com.hxjd.connection.websocket;
 public class RealTimeData
 {
     private RealTimeDataType type;
-    private String content;
+    private Object content;
 
-    public RealTimeData(RealTimeDataType type, String content)
+    public RealTimeData(RealTimeDataType type, Object content)
     {
         this.type = type;
         this.content = content;
@@ -29,12 +29,12 @@ public class RealTimeData
         this.type = type;
     }
 
-    public String getContent()
+    public Object getContent()
     {
         return content;
     }
 
-    public void setContent(String content)
+    public void setContent(Object content)
     {
         this.content = content;
     }

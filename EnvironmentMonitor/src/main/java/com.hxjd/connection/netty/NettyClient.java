@@ -1,6 +1,6 @@
 package com.hxjd.connection.netty;
 
-import com.hxjd.config.SurveillanceConfig;
+import com.hxjd.config.EnvironmentMonitorConfig;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.*;
@@ -111,8 +111,8 @@ public class NettyClient
             }
             else
             {
-                logger.error("5s后重连");
-                futureListener.channel().eventLoop().schedule(this::reConnect, 5, TimeUnit.SECONDS);
+               /* logger.error("5s后重连");
+                futureListener.channel().eventLoop().schedule(this::reConnect, 5, TimeUnit.SECONDS);*/
             }
         });
     }
@@ -120,7 +120,7 @@ public class NettyClient
     private void sendActiveMsg(Channel channel)
     {
         new NioSocketChannel().remoteAddress();
-        sendMsg("#init#" + SurveillanceConfig.FLAG);
+        sendMsg("#init#" + EnvironmentMonitorConfig.FLAG);
     }
 
     /*^_^*------以下业务无关------*^_^*/

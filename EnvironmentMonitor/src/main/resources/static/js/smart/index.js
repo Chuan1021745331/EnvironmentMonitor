@@ -3,7 +3,7 @@
 $(document).ready(function () {
 
     initComponent();
-    initWebSocket($("#webSocketUrl").val());
+    // initWebSocket($("#webSocketUrl").val());
     initVue();
 
 });

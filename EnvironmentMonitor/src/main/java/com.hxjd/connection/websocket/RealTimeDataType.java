@@ -10,8 +10,7 @@ package com.hxjd.connection.websocket;
  */
 public enum RealTimeDataType
 {
-    STATUS(0, "status");
-
+    STATUS(0, "status"),SAFEDATA(1,"安全数据"),DangerousData(2,"超标数据");
     private int code;
     private String name;
 

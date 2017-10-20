@@ -4,19 +4,24 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link th:href="@{/css/smart.css}" href="../static/css/smart.css" rel="stylesheet" />
-    <link th:href="@{/css/materialize/materialize.css}" type="text/css" rel="stylesheet"
+
+   <link th:href="@{/css/materialize/materialize.css}" type="text/css" rel="stylesheet"
           href="../static/css/materialize/materialize.css" media="screen,projection"/>
+    <link th:href="@{/css/bootstrap.min.css}" href="../static/css/bootstrap.min.css"
+          rel="stylesheet"/>
     <link th:href="@{/css/fullpage/jquery.fullpage.min.css}" href="../static/css/fullpage/jquery.fullpage.min.css"
           rel="stylesheet"/>
-    <title>智慧工地-视频监控系统</title>
+    <link th:href="@{/css/index.css}" href="../static/css/index.css"
+          rel="stylesheet"/>
+    <title>智慧工地-环境监测系统</title>
 </head>
 <body>
 <!-- 导航栏 -->
 <nav>
     <div class="nav-wrapper black padding-left-10">
-        <a href="#" class="brand-logo" style="margin-left: 20px">智慧工地-视频监控系统</a>
+        <a href="#" class="brand-logo" style="margin-left: 20px">智慧工地-环境监测系统</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="#" data-activates="slide-out" id="slideMenu"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-zititubiaocebianlan"></use></svg></a></li>
+            <li><a href="#" data-activates="slide-out" id="slideMenu">菜单<svg class="icon" aria-hidden="true"><use xlink:href="#icon-zititubiaocebianlan"></use></svg></a></li>
         </ul>
 
     </div>
@@ -32,17 +37,144 @@
         </div>
     </li>
     <li><a class="subheader">操作</a></li>
-    <li><a href="#">操作1</a></li>
-    <li><a href="#">操作2</a></li>
+    <li><a href="#nowInformation" data-toggle="tab">实时信息</a></li>
+    <li><a href="#historydata" data-toggle="tab">历史数据</a></li>
+    <li><a href="#devicecontrole" data-toggle="tab">设备控制</a></li>
     <li><div class="divider"></div></li>
     <li><a class="subheader">配置</a></li>
     <li><a class="waves-effect" href="#">配置1</a></li>
 </ul>
 
 <!-- 以下放界面组件，需要自己定制 -->
+<div id="content" class="tab-content">
+    <div id="nowInformation" class="tab-pane active">
+        <!--  <span style="margin-left:40px;text-shadow: 2px 0px 6px rgba(94, 35, 255, 0.91);">
+                内容一
+         </span>-->
+        <!--基本数据信息，7项数据-->
+        <div id="basicInformation" class="right-basic">
+            <div id="project" class="alert alert-success">项目名称：{{content.device.projectCode}}</div>
+            <div id="device" class="alert alert-success">
+                <select  id="deviceId" class="alert-success"  v-model="showDeviceId" @change="changeShowDeviceId()"
+                         style="display:block">
+                    <option v-for="device in allDevice" v-bind:value="device.deviceId">
+                        {{device.deviceId}}
+                    </option>
+                </select>
+                <p>设备ID：</p>
+            </div>
+            <button type="button" v-bind:class="[outSideStatus.pm2p5?dataShowClass.dangerClass:dataShowClass.safeClass]" @click="changeShowType('pm2p5')">
+                <span class="glyphicon glyphicon-fire text-lowercase" >pm2.5：  {{content.pm2p5}}ug</span>
+            </button>
+            <button type="button" v-bind:class="[outSideStatus.pm10?dataShowClass.dangerClass:dataShowClass.safeClass]" @click="changeShowType('pm10')">
+                <span class="glyphicon glyphicon-fire " >pm10：  {{content.pm10}}ug</span>
+            </button>
+            <button type="button" v-bind:class="[outSideStatus.temperature?dataShowClass.dangerClass:dataShowClass.safeClass]" @click="changeShowType('temperature')">
+                <span class="glyphicon glyphicon-fire">温度：  {{content.temperature}}℃</span>
+            </button>
+            <button type="button" v-bind:class="[outSideStatus.humidity?dataShowClass.dangerClass:dataShowClass.safeClass]" @click="changeShowType('humidity')">
+                <span class="glyphicon glyphicon-tint" >湿度：  {{content.humidity}}%</span>
+            </button>
+            <button type="button" v-bind:class="[outSideStatus.noise?dataShowClass.dangerClass:dataShowClass.safeClass]" @click="changeShowType('noise')">
+                <span class="glyphicon glyphicon-headphones" >噪声：  {{content.noise}}DB</span>
+            </button>
+            <button type="button" v-bind:class="[outSideStatus.windSpeed?dataShowClass.dangerClass:dataShowClass.safeClass]" @click="changeShowType('windSpeed')">
+                <span class="glyphicon glyphicon-fire" >风速：  {{content.windSpeed}}m/s</span>
+            </button>
+            <button type="button" class="btn btn-success">
+                <span class="glyphicon glyphicon-flag" >风向：  {{content.windDirection}}°</span>
+            </button>
+            <div  class="right-basic-intervaltime  btn-success">
+                <span>间隔：</span>
+                <select  class="btn-success" v-model="intervalTime" @change=""
+                         style="display:block">
+                    <option value="1000">1s</option>
+                    <option value="5000">5s</option>
+                    <option value="10000">10s</option>
+                    <option value="15000">15s</option>
+                    <option value="30000">30s</option>
+                </select>
+            </div>
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                &times;
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            在这里添加一些文本
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                            </button>
+                            <button type="button" class="btn btn-primary">
+                                提交更改
+                            </button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
+            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                开始演示模态框
+            </button>
+
+
+        </div>
+        <!--图表信息-->
+        <div id="chartInformation" class="right-chart tab-content">
+                <canvas id="temperatureChart"></canvas>
+                <p id="time"></p>
+        </div>
+    </div>
+    <!--历史数据显示-->
+    <div id="historydata" class="tab-pane">
+        <!--显示设置-->
+        <form  role="form" class="right-setting">
+            <!--时间段设置-->
+            <div class="choosejedate  form-group" id="choosejedate">
+                <div class="right-setting-rangtime">
+                    <span >开始时间：</span>
+                    <input id="starttime" type="text" placeholder="YYYY年MM月DD日 hh:mm:ss" v-model="startTime" >
+                </div>
+                <div class="right-setting-rangtime">
+                    <span >结束时间：</span>
+                    <input id="endtime" type="text" placeholder="YYYY年MM月DD日 hh:mm:ss" v-model="endTime" >
+                </div>
+            </div>
+            <!--时间间隔设置-->
+            <div class="form-group">
+                <label>时间间隔： </label>
+                <select id="intervalTime" name="intervaltime">
+                    <option value="5">5s</option>
+                </select>
+            </div>
+        </form>
+        <div class="right-chart tab-content">
+            <div  class="tab-pane active">
+                <canvas ></canvas>
+            </div>
+        </div>
+    </div>
+    <div id="devicecontrole" class="tab-pane">
+         <span style="margin-left:40px;text-shadow: 2px 0px 6px rgba(94, 35, 255, 0.91);">
+               内容三
+        </span>
+        <a href="#nowInformation" data-toggle="tab">实时信息</a>
+    </div>
+    <div id="four" class="tab-pane">
+
+    </div>
+</div>
+<!---->
+<div class="footer">
+    <div class="footer-lable"><span ><b>@华夏九鼎2017</b></span></div>
+</div>
+
 
 <!-- ******以下业务无关****** -->
-<input id="webSocketUrl" type="hidden" th:value="${@environmentMonitorConfig.getDataRealTimeUrl()}" />
+<!--<input id="webSocketUrl" type="hidden" th:value="${@environmentMonitorConfig.getDataRealTimeUrl()}" />-->
 <!-- 模态框 -->
 <div id="checkBrowser" class="modal">
     <div class="modal-content">
@@ -50,22 +182,28 @@
         <p>您的浏览器不支持WebSocket，请更换浏览器，否则无法运行</p>
     </div>
     <div class="modal-footer">
-        <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">我知道了</a>
+        <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat"  data-dismiss="modal">我知道了</a>
+
     </div>
 </div>
 </body>
 <script th:src="@{/js/jquery-3.2.1.min.js}" src="../static/js/jquery-3.2.1.min.js"></script>
-<script th:src="@{/js/materialize/materialize.min.js}" src="../static/js/materialize/materialize.min.js"></script>
+<script th:src="@{/js/bootstrap.min.js}" src="../static/js/bootstrap.min.js"></script>
+<!--<script th:src="@{/js/materialize/materialize.min.js}" src="../static/js/materialize/materialize.min.js"></script>
 <script th:src="@{/js/iconfont/iconfont.js}" src="../static/js/iconfont/iconfont.js"></script>
-<script th:src="@{/js/fullpage/jquery.fullpage.min.js}" src="../static/js/fullpage/jquery.fullpage.min.js"></script>
+<script th:src="@{/js/fullpage/jquery.fullpage.min.js}" src="../static/js/fullpage/jquery.fullpage.min.js"></script>-->
 <script th:src="@{/js/vue/vue.js}" src="../static/js/vue/vue.js"></script>
+<script th:src="@{/js/vue/vue-resource.js}" src="../static/js/vue/vue-resource.js"></script>
 <script th:src="@{/js/echarts/echarts.js}" src="../static/js/echarts/echarts.js"></script>
 <script th:src="@{/js/smart/vars.js}" src="../static/js/smart/vars.js"></script>
 <script th:src="@{/js/smart/utils.js}" src="../static/js/smart/utils.js"></script>
 <script th:src="@{/js/smart/initVue.js}" src="../static/js/smart/initVue.js"></script>
 <script th:src="@{/js/smart/initWebSocket.js}" src="../static/js/smart/initWebSocket.js"></script>
 <script th:src="@{/js/smart/index.js}" src="../static/js/smart/index.js"></script>
+<script th:src="@{/js/smart/Chart.js}" src="../static/js/smart/Chart.js"></script>
+<script th:src="@{/js/smart/initData.js}" src="../static/js/smart/initData.js"></script>
 <script type="text/javascript">
-
+    initVue();
+    initWebSocket("ws://localhost:8081/dataRealTime");
 </script>
 </html>

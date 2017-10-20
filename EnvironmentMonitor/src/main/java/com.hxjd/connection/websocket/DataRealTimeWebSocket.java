@@ -73,6 +73,7 @@ public class DataRealTimeWebSocket
 
     public static void sendMessage(Object message)
     {
+        System.out.println("发送消息");
         for(DataRealTimeWebSocket dw : webSocketSet)
         {
             dw.send(JSON.toJSONString(message));

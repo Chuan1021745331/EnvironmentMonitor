@@ -1,0 +1,117 @@
+
+#content{
+    position: absolute;
+    margin-top:0px;
+    width: 100%;
+    height: 80%;
+    /*border:1px solid red;*/
+}
+.right-basic{
+    position: absolute;
+
+    margin-left:0px;
+    width: 25%;
+    height: 100%;
+  /* border:1px solid red;*/
+}
+#project{
+    margin-top:15%;
+    margin-left: 4%;
+    height: 8%;
+    width: 85%;
+    padding-top: 4%;
+}
+#device{
+    margin-left: 4%;
+    height: 8%;
+    width: 85%;
+    /*border:1px solid red;*/
+}
+
+#device select{
+    float:right;
+    width: 75%;
+    height:100%;
+}
+#device p{
+    width: 20%;
+    height: 100%;
+    padding-top: 3%;
+}
+.right-chart{
+    position: absolute;
+    margin-left:30%;
+    width: 65%;
+    height: 100%;
+    /*border:1px solid red;*/
+}
+.footer{
+    position: absolute;
+    margin-top: 40.5%;
+    width: 100%;
+    height: 20%;
+   /* border:1px solid red;*/
+}
+.right-basic button{
+    float: left;
+    padding-left: 5px;
+    margin-left: 4%;
+    margin-right: 5%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 38%;
+    height: 40px;
+    text-transform : lowercase
+}
+.right-basic-intervaltime{
+    float: left;
+    margin-left: 4%;
+    margin-right: 5%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 38%;
+    height: 6%;
+    background-color: #55ab55;
+    color: white;
+}
+.right-basic-intervaltime span{
+    float: left;
+    margin-left: 15%;
+    margin-top:7%;
+    font-size: 15px;
+}
+.right-basic-intervaltime select{
+    float:right;
+    width: 50%;
+    height: 100%;
+}
+#time{
+    text-align: center;
+    margin-top: 3%;
+}
+.right-setting{
+    position: absolute;
+    margin-left:0px;
+    width: 25%;
+    height: 100%;
+   /* border:1px solid red;*/
+}
+.right-setting-rangtime{
+    margin-top: 5%;
+}
+.footer{
+    position: absolute;
+    margin-bottom:0px;
+    width: 100%;
+    height: 10%;
+
+   /* border:1px solid red;*/
+}
+.footer-lable{
+    position: absolute;
+    width: 100%;
+    height: 25%;
+    margin-top: 4%;
+    text-align: center;
+    /*border:1px solid black;*/
+}

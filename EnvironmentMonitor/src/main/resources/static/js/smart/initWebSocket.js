@@ -10,7 +10,7 @@ function initWebSocket(url)
         webSocket = new WebSocket(webSocketUrl);
     }
     else {
-        $('#checkBrowser').modal('open');
+         $('#checkBrowser').modal('open');
     }
 
     //websocket发生错误时的回调
@@ -21,11 +21,13 @@ function initWebSocket(url)
     webSocket.onopen = function (event) {
         statusVue.runStatus = "系统正在运行";
         statusVue.needRefresh = false;
+
     };
 
     //当有消息是时的回调函数
     webSocket.onmessage = function (event) {
-        dataHandler(event.data);
+
+       dataHandler(event.data);
     };
 
     //websocket关闭时的回调函数
@@ -41,6 +43,9 @@ function initWebSocket(url)
     }
 }
 
+/*
+处理服务器发送的数据
+ */
 function dataHandler(data) {
     //{"content":"在线","type":"STATUS"}
     data = JSON.parse(data);
@@ -58,6 +63,11 @@ function dataHandler(data) {
                 statusVue.connectStatus = "已连接至控制中心";
                 statusVue.needReconnect = false;
             }
+            break;
+        case "SAFEDATA":
+            console.log(data);
+            //接收服务器传输的最新数据,添加数据到图表
+            realDataVue.chartAddData(data.content);
             break;
         default:
             break;

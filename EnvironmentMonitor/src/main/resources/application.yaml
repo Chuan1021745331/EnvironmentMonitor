@@ -3,9 +3,16 @@ spring:
     banner-mode: "console"
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/common_test_server?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://localhost:3306/environment?useUnicode=true&characterEncoding=utf-8
     username: root
-    password: root
+    password: 123456
+  jpa:
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      dialect: org.hibernate.dialect.MySQL5Dialect
   profiles:
     #启用开发环境配置
     active: development
@@ -24,9 +31,10 @@ spring:
     cache: false
     prefix: classpath:/templates
     suffix: .html
-    mode: HTML5
+    mode: LEGACYHTML5
     encoding: UTF-8
     content-type: text/html
+
 server:
   port: 8081
 

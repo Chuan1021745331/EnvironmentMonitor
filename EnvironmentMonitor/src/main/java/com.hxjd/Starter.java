@@ -1,8 +1,12 @@
 package com.hxjd;
 
 
+import com.hxjd.connection.http.SmartHttp;
 import com.hxjd.listener.MyApplicationFailedEvent;
 import com.hxjd.listener.MyApplicationReadyEvent;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +16,9 @@ import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomi
 import org.springframework.boot.web.servlet.ErrorPage;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
+
+import javax.swing.*;
+import java.io.IOException;
 
 /**
  * Time: 16:52
@@ -33,7 +40,20 @@ public class Starter
 
         application.addListeners(new MyApplicationReadyEvent(), new MyApplicationFailedEvent());
 
+
         application.run(args);
+
+//        SmartHttp.post("").params("", "").execute(new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//
+//            }
+//
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException {
+//
+//            }
+//        });
     }
 
     @Bean
