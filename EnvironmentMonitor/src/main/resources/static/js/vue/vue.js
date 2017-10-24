@@ -667,7 +667,7 @@ var nextTick = (function () {
       // in problematic UIWebViews, Promise.then doesn't completely break, but
       // it can get stuck in a weird state where callbacks are pushed into the
       // microtask queue but the queue isn't being flushed, until the browser
-      // needs to do some other work, e.g. handle a timer. Therefore we can
+      // needs to do some other work, e.g. handler a timer. Therefore we can
       // "force" the microtask queue to be flushed by adding an empty timer.
       if (isIOS) { setTimeout(noop); }
     };
@@ -1080,7 +1080,7 @@ function dependArray (value) {
 /*  */
 
 /**
- * Option overwriting strategies are functions that handle
+ * Option overwriting strategies are functions that handler
  * how to merge a parent option value and a child option
  * value into the final value.
  */
@@ -1443,7 +1443,7 @@ function validateProp (
   var prop = propOptions[key];
   var absent = !hasOwn(propsData, key);
   var value = propsData[key];
-  // handle boolean props
+  // handler boolean props
   if (isType(Boolean, prop.type)) {
     if (absent && !hasOwn(prop, 'default')) {
       value = false;
@@ -5953,7 +5953,7 @@ function updateClass (oldVnode, vnode) {
 
   var cls = genClassForVnode(vnode);
 
-  // handle transition classes
+  // handler transition classes
   var transitionClass = el._transitionClasses;
   if (isDef(transitionClass)) {
     cls = concat(cls, stringifyClass(transitionClass));
@@ -7749,7 +7749,7 @@ var Transition = {
       // replace old child transition data with fresh one
       // important for dynamic transitions!
       var oldData = oldChild && (oldChild.data.transition = extend({}, data));
-      // handle transition mode
+      // handler transition mode
       if (mode === 'out-in') {
         // return placeholder node and queue update when leave finishes
         this._leaving = true;
@@ -8597,7 +8597,7 @@ function parse (
       // inherit parent ns if there is one
       var ns = (currentParent && currentParent.ns) || platformGetTagNamespace(tag);
 
-      // handle IE svg bug
+      // handler IE svg bug
       /* istanbul ignore if */
       if (isIE && ns === 'svg') {
         attrs = guardIESVGBug(attrs);

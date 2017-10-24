@@ -63,6 +63,12 @@
     height: 40px;
     text-transform : lowercase
 }
+#controlAlertDataOutSide{
+    /*display: none;*/
+}
+.modal-footer a{
+    position: relative;
+}
 .right-basic-intervaltime{
     float: left;
     margin-left: 4%;

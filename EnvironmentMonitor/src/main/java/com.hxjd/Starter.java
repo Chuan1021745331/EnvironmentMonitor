@@ -2,6 +2,8 @@ package com.hxjd;
 
 
 import com.hxjd.connection.http.SmartHttp;
+import com.hxjd.connection.http.post.Params;
+import com.hxjd.connection.netty.NettyClient;
 import com.hxjd.listener.MyApplicationFailedEvent;
 import com.hxjd.listener.MyApplicationReadyEvent;
 import okhttp3.Call;
@@ -40,20 +42,7 @@ public class Starter
 
         application.addListeners(new MyApplicationReadyEvent(), new MyApplicationFailedEvent());
 
-
         application.run(args);
-
-//        SmartHttp.post("").params("", "").execute(new Callback() {
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//
-//            }
-//
-//            @Override
-//            public void onResponse(Call call, Response response) throws IOException {
-//
-//            }
-//        });
     }
 
     @Bean

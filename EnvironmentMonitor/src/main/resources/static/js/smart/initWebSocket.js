@@ -10,7 +10,7 @@ function initWebSocket(url)
         webSocket = new WebSocket(webSocketUrl);
     }
     else {
-         $('#checkBrowser').modal('open');
+        /* $('#checkBrowser').modal('open');*/
     }
 
     //websocket发生错误时的回调
@@ -66,8 +66,8 @@ function dataHandler(data) {
             break;
         case "SAFEDATA":
             console.log(data);
-            //接收服务器传输的最新数据,添加数据到图表
-            realDataVue.chartAddData(data.content);
+            //接收服务器传输的最新数据
+            realDataVue.receiveData(data.content);
             break;
         default:
             break;

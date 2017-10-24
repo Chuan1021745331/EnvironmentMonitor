@@ -1,35 +1,31 @@
-package com.hxjd.connection.netty;
+package com.hxjd.handler.receiver.socket.netty;
 
+import com.hxjd.handler.receiver.socket.DispatcherCenterSocket;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.handler.codec.DelimiterBasedFrameDecoder;
-import io.netty.handler.codec.Delimiters;
-import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.timeout.IdleStateHandler;
 
-
 /**
- * Time: 14:27
- * Date: 2017/9/15
+ * Time: 9:31
+ * Date: 2017/9/25
  * Corp: 华夏九鼎
  * Name: Nandem(nandem@126.com)
  * ----------------------------
- * Desc: Netty客户端初始化器
+ * Desc: 请输入描述
  */
-public class NettyClientInitializer extends ChannelInitializer<SocketChannel>
+public final class DataReceiveServerInitializer extends ChannelInitializer<SocketChannel>
 {
-
     @Override
     public void initChannel(SocketChannel ch) throws Exception
     {
         ChannelPipeline pipeline = ch.pipeline();
 
-        pipeline.addLast(new IdleStateHandler(0, 0, 10));
+        pipeline.addLast(new IdleStateHandler(10, 0, 0));
         pipeline.addLast("decoder", new StringDecoder());
         pipeline.addLast("encoder", new StringEncoder());
-        pipeline.addLast("handler", new NettyClientHandler());
+        pipeline.addLast("handler", new DispatcherCenterSocket());
     }
 }

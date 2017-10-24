@@ -594,7 +594,7 @@ $.extend($.validator, {
       return this.findDefined(
         this.customMessage( element.name, method ),
         this.customMetaMessage( element, method ),
-        // title is never undefined, so handle empty string as undefined
+        // title is never undefined, so handler empty string as undefined
         !this.settings.ignoreTitle && element.title || undefined,
         $.validator.messages[method],
         "<strong>Warning: No message defined for " + element.name + "</strong>"
@@ -890,7 +890,7 @@ $.extend($.validator, {
   },
 
   normalizeRules: function(rules, element) {
-    // handle dependency check
+    // handler dependency check
     $.each(rules, function(prop, val) {
       // ignore rule when param is explicitly false, eg. required:false
       if (val === false) {

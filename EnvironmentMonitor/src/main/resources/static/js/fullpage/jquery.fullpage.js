@@ -2562,7 +2562,7 @@
                 document[ _addEventListener ](prefix + 'MozMousePixelScroll', MouseWheelHandler, false);
             }
 
-            //handle MozMousePixelScroll in older Firefox
+            //handler MozMousePixelScroll in older Firefox
             else{
                 document[ _addEventListener ](prefix + support, MouseWheelHandler, false);
             }
@@ -2946,7 +2946,7 @@
     }
 
     /**
-     * An object to handle overflow scrolling.
+     * An object to handler overflow scrolling.
      * This uses jquery.slimScroll to accomplish overflow scrolling.
      * It is possible to pass in an alternate scrollOverflowHandler
      * to the fullpage.js option that implements the same functions

@@ -16818,7 +16818,7 @@
 
                     vec2.sub(v, nextPoint, prevPoint);
 
-                    // use degree to scale the handle length
+                    // use degree to scale the handler length
                     v2Scale(v, v, smooth);
 
                     var d0 = v2Distance(point, prevPoint);
@@ -18924,7 +18924,7 @@
              * this might be the only simple way to implement that feature.
              *
              * MEMO: We've considered some other approaches:
-             * 1. Each model handle its self restoration but not uniform treatment.
+             * 1. Each model handler its self restoration but not uniform treatment.
              *     (Too complex in logic and error-prone)
              * 2. Use a shadow ecModel. (Performace expensive)
              */
@@ -19452,7 +19452,7 @@
                  *
                  * By default the result is the same as dimensions of series data.
                  * But in some series data dimensions are different from coord dimensions (i.e.
-                 * candlestick and boxplot). Override this method to handle those cases.
+                 * candlestick and boxplot). Override this method to handler those cases.
                  *
                  * Coord dimension to data dimension can be one-to-many
                  *
@@ -22585,7 +22585,7 @@
 
                     // 1. Considering some devices that both enable touch and mouse event (like on MS Surface
                     // and lenovo X240, @see #2350), we make mouse event be always listened, otherwise
-                    // mouse event can not be handle in those devices.
+                    // mouse event can not be handler in those devices.
                     // 2. On MS Surface, Chrome will trigger both touch event and mouse event. How to prevent
                     // mouseevent after touch event triggered, see `setTouchTimer`.
                     mountHandlers(mouseHandlerNames, this);
@@ -32866,7 +32866,7 @@
                 }
 
                 var useHandle = isHandleTrigger(axisPointerModel);
-                // If `handle` used, `axisPointer` will always be displayed, so value
+                // If `handler` used, `axisPointer` will always be displayed, so value
                 // and status should be initialized.
                 if (status == null) {
                     option.status = useHandle ? 'show' : 'hide';
@@ -32877,11 +32877,11 @@
 
                 if (// Pick a value on axis when initializing.
                 value == null
-                // If both `handle` and `dataZoom` are used, value may be out of axis extent,
-                // where we should re-pick a value to keep `handle` displaying normally.
+                // If both `handler` and `dataZoom` are used, value may be out of axis extent,
+                // where we should re-pick a value to keep `handler` displaying normally.
                 || value > extent[1]
                 ) {
-                    // Make handle displayed on the end of the axis when init, which looks better.
+                    // Make handler displayed on the end of the axis when init, which looks better.
                     value = extent[1];
                 }
                 if (value < extent[0]) {
@@ -55467,7 +55467,7 @@
                         // For label formatter param and highlight.
                         option.seriesDataIndices = (valItem.payloadBatch || []).slice();
                     }
-                    // When always show (e.g., handle used), remain
+                    // When always show (e.g., handler used), remain
                     // original value and status.
                     else {
                         // If hide, value still need to be set, consider
@@ -55651,7 +55651,7 @@
                 coordSysAxesInfo: null,
 
                 defaultOption: {
-                    // 'auto' means that show when triggered by tooltip or handle.
+                    // 'auto' means that show when triggered by tooltip or handler.
                     show: 'auto',
                     // 'click' | 'mousemove' | 'none'
                     triggerOn: null, // set default in AxisPonterView.js
@@ -55666,7 +55666,7 @@
                     triggerTooltip: true,
 
                     value: null,
-                    status: null, // Init value depends on whether handle is used.
+                    status: null, // Init value depends on whether handler is used.
 
                     // [group0, group1, ...]
                     // Each group can be: {
@@ -55718,7 +55718,7 @@
                         show: false,
                         icon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4h1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7v-1.2h6.6z M13.3,22H6.7v-1.2h6.6z M13.3,19.6H6.7v-1.2h6.6z', // jshint ignore:line
                         size: 45,
-                        // handle margin is from symbol center to axis, which is stable when circular move.
+                        // handler margin is from symbol center to axis, which is stable when circular move.
                         margin: 50,
                         // color: '#1b8bbd'
                         // color: '#2f4554'
@@ -56454,20 +56454,20 @@
                     }
 
                     var value = this._axisPointerModel.get('value');
-                    // Consider snap or categroy axis, handle may be not consistent with
-                    // axisPointer. So move handle to align the exact value position when
+                    // Consider snap or categroy axis, handler may be not consistent with
+                    // axisPointer. So move handler to align the exact value position when
                     // drag ended.
                     this._moveHandleToValue(value);
 
-                    // For the effect: tooltip will be shown when finger holding on handle
-                    // button, and will be hidden after finger left handle button.
+                    // For the effect: tooltip will be shown when finger holding on handler
+                    // button, and will be hidden after finger left handler button.
                     this._api.dispatchAction({
                         type: 'hideTip'
                     });
                 },
 
                 /**
-                 * Should be implemenented by sub-class if support `handle`.
+                 * Should be implemenented by sub-class if support `handler`.
                  * @protected
                  * @param {number} value
                  * @param {module:echarts/model/Model} axisModel
@@ -56477,7 +56477,7 @@
                 getHandleTransform: null,
 
                 /**
-                 * * Should be implemenented by sub-class if support `handle`.
+                 * * Should be implemenented by sub-class if support `handler`.
                  * @protected
                  * @param {Object} transform {position, rotation}
                  * @param {Array.<number>} delta [dx, dy]
@@ -60477,7 +60477,7 @@
 
                     // 位置 {Array} | {Function}
                     // position: null
-                    // Consider triggered from axisPointer handle, verticalAlign should be 'middle'
+                    // Consider triggered from axisPointer handler, verticalAlign should be 'middle'
                     // align: null,
                     // verticalAlign: null,
 
@@ -62715,7 +62715,7 @@
                     viewHelper.buildLabelElOption(elOption, axisModel, axisPointerModel, api, labelPos);
                 }
 
-                // Do not support handle, utill any user requires it.
+                // Do not support handler, utill any user requires it.
 
             });
 
@@ -67636,7 +67636,7 @@
                                                             // is ignored.
 
                     fillerColor: 'rgba(167,183,204,0.4)',     // Color of selected area.
-                    // handleColor: 'rgba(89,170,216,0.95)',     // Color of handle.
+                    // handleColor: 'rgba(89,170,216,0.95)',     // Color of handler.
                     // handleIcon: 'path://M4.9,17.8c0-1.4,4.5-10.5,5.5-12.4c0-0.1,0.6-1.1,0.9-1.1c0.4,0,0.9,1,0.9,1.1c1.1,2.2,5.4,11,5.4,12.4v17.8c0,1.5-0.6,2.1-1.3,2.1H6.1c-0.7,0-1.3-0.6-1.3-2.1V17.8z',
                     handleIcon: 'M8.2,13.6V3.9H6.3v9.7H3.1v14.9h3.3v9.7h1.8v-9.7h3.3V13.6H8.2z M9.7,24.4H4.8v-1.4h4.9V24.4z M9.7,19.1H4.8v-1.4h4.9V19.1z',
                     // Percent of the slider height
@@ -67718,7 +67718,7 @@
                     this._range;
 
                     /**
-                     * [coord of the first handle, coord of the second handle]
+                     * [coord of the first handler, coord of the second handler]
                      * @private
                      */
                     this._handleEnds;
@@ -69281,7 +69281,7 @@
                     itemWidth: null,        // The length of the other side.
                     hoverLink: true,        // Enable hover highlight.
                     hoverLinkDataSize: null,// The size of hovered data.
-                    hoverLinkOnHandle: true // Whether trigger hoverLink when hover handle.
+                    hoverLinkOnHandle: true // Whether trigger hoverLink when hover handler.
                 },
 
                 /**
@@ -70626,7 +70626,7 @@
                         handleThumb.setStyle('fill', visualInRange.handlesColor[handleIndex]);
                         handleThumb.position[1] = handleEnds[handleIndex];
 
-                        // Update handle label position.
+                        // Update handler label position.
                         var textPoint = graphic.applyTransform(
                             shapes.handleLabelPoints[handleIndex],
                             graphic.getTransform(handleThumb, this.group)
@@ -70676,7 +70676,7 @@
                     var color = this.getControllerVisual(cursorValue, 'color', opts);
                     indicator.setStyle('fill', color);
 
-                    // Update handle label position.
+                    // Update handler label position.
                     var textPoint = graphic.applyTransform(
                         shapes.indicatorLabelPoint,
                         graphic.getTransform(indicator, this.group)
@@ -70710,7 +70710,7 @@
                                 var pos = self._applyTransform(
                                     [e.offsetX, e.offsetY], self._shapes.barGroup, true, true
                                 );
-                                // For hover link show when hover handle, which might be
+                                // For hover link show when hover handler, which might be
                                 // below or upper than sizeExtent.
                                 pos[1] = mathMin(mathMax(0, pos[1]), itemSize[1]);
 
@@ -70722,7 +70722,7 @@
                         })
 
                         .on('mouseout', function () {
-                            // When mouse is out of handle, hoverLink still need
+                            // When mouse is out of handler, hoverLink still need
                             // to be displayed when realtime is set as false.
                             self._hovering = false;
                             !self._dragging && self._clearHoverLinkToSeries();
@@ -70758,7 +70758,7 @@
                     var sizeExtent = [0, itemSize[1]];
                     var dataExtent = visualMapModel.getExtent();
 
-                    // For hover link show when hover handle, which might be below or upper than sizeExtent.
+                    // For hover link show when hover handler, which might be below or upper than sizeExtent.
                     cursorPos = mathMin(mathMax(sizeExtent[0], cursorPos), sizeExtent[1]);
 
                     var halfHoverLinkSize = getHalfHoverLinkSize(visualMapModel, dataExtent, sizeExtent);
@@ -70773,7 +70773,7 @@
                     hoverRange[0] < sizeExtent[0] && (valueRange[0] = -Infinity);
                     hoverRange[1] > sizeExtent[1] && (valueRange[1] = Infinity);
 
-                    // Do not show indicator when mouse is over handle,
+                    // Do not show indicator when mouse is over handler,
                     // otherwise labels overlap, especially when dragging.
                     if (hoverOnBar) {
                         if (valueRange[0] === -Infinity) {
@@ -70791,7 +70791,7 @@
                     // also trigger hoverLink, which help user to realize where they
                     // focus on when dragging. (see test/heatmap-large.html)
                     // When realtime is set as true, highlight will not show when hover
-                    // handle, because the label on handle, which displays a exact value
+                    // handler, because the label on handler, which displays a exact value
                     // but not range, might mislead users.
                     var oldBatch = this._hoverLinkDataIndices;
                     var newBatch = [];
